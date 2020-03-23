@@ -50,6 +50,12 @@ class App extends React.Component {
     // Use {overall.total_cases} or {overall["total_cases"]} inside brackets to show data
     //
 
+    //"country":"India"
+    //"province":""
+    //"confirmed":396
+    //"recovered":27
+    //"deaths":7
+
     //DESIGN PART BELOW
     //==============================================================================
     return (
@@ -66,9 +72,8 @@ class App extends React.Component {
         <Col span={12}><Title level={3}>New Deaths (W): {overall["new_deaths"]}</Title></Col>
         </Row>
         <Row>     
-        <Col span={24}><Title level={4}>Last updated at: {overall["statistic_taken_at"]}</Title></Col>
+        <Col span={24}><Title level={3}>Last updated at: {overall["statistic_taken_at"]}</Title></Col>
         </Row>
-        
         {/* <Button type="primary">Test</Button> */}
       </div>
     );
