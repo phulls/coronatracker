@@ -2,17 +2,17 @@ import * as React from 'react';
 import './App.css';
 
 
-import { Button, Row, Col } from 'antd';
+import { Button, Row, Col, Divider } from 'antd';
 import { Typography } from 'antd';
 
-const { Title } = Typography;
 
+const { Title } = Typography;
+const style = { background: '#0092ff', padding: '8px 0px 24px 0px' };
 class App extends React.Component {
 
   componentDidMount(){
-    var that = this;
-    // changes start
     
+    // changes start
     fetch("https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php", {
       "method": "GET",
       "headers": {
@@ -47,7 +47,7 @@ class App extends React.Component {
     //   "statistic_taken_at": "2020-03-18 12:06:04"
     // }
     //
-    // Use {overall.total_cases} inside brackets to show data
+    // Use {overall.total_cases} or {overall["total_cases"]} inside brackets to show data
     //
 
     //DESIGN PART BELOW
@@ -55,23 +55,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <Row>
-          <Col span={24}>
-            <Title level={1}>Total Cases: {overall["total_cases"]}</Title>
-          </Col>
+          <Col span={24}><Title level={1}>Total Cases: {overall["total_cases"]}</Title></Col>
         </Row>
         <Row>
-          <Col span={24}>
-            <Title level={3}>
-              Total Deaths: {overall["total_deaths"]}
-            </Title>
-          </Col>
+          <Col span={12}><Title level={3}>Total Deaths: {overall["total_deaths"]}</Title></Col>
+          <Col span={12}><Title level={3}>Total Recovered: {overall["total_recovered"]}</Title></Col>
         </Row>
         <Row>     
-        <Col span={24}>
-            <Title level={3}>
-              Total Recovered: {overall["total_recovered"]}
-              </Title>
-          </Col>
+        <Col span={12}><Title level={3}>New Cases (W): {overall["new_cases"]}</Title></Col>
+        <Col span={12}><Title level={3}>New Deaths (W): {overall["new_deaths"]}</Title></Col>
+        </Row>
+        <Row>     
+        <Col span={24}><Title level={4}>Last updated at: {overall["statistic_taken_at"]}</Title></Col>
         </Row>
         
         {/* <Button type="primary">Test</Button> */}
